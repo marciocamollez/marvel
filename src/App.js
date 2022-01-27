@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Tabela from './components/Tabela';
+import Busca from './components/Busca';
 import axios from 'axios';
 
 //hash = timestamp (1) + private key + public key convertido em md5
@@ -10,22 +11,31 @@ function App() {
 
   const [items, setItems] = useState([]);
   const [isLoading, setLoading] = useState(true);
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
-    const fetch = async()=>{
-      const result = await axios(`http://gateway.marvel.com/v1/public/characters?ts=1&apikey=eb8c78fd1e6e98315a9d42fff3b5c040&hash=${hash}`);
+      const fetch = async()=>{
+        if(query===''){
+          const result = await axios(`http://gateway.marvel.com/v1/public/characters?ts=1&apikey=eb8c78fd1e6e98315a9d42fff3b5c040&hash=${hash}`);
 
-      console.log(result.data.data.results);
-      setItems(result.data.data.results);
-      setLoading(false);
+          //console.log(result.data.data.results);
+          setItems(result.data.data.results);
+          setLoading(false);
+        }else{
+          const result = await axios(`http://gateway.marvel.com/v1/public/characters?nameStartsWith=${query}&ts=1&apikey=eb8c78fd1e6e98315a9d42fff3b5c040&hash=${hash}`);
+          setItems(result.data.data.results);
+          setLoading(false);
+        }
+      
     }
 
     fetch()
-  },[])
+  },[query])
 
   return (
     <div className="container">
       <Header />
+      <Busca search={(q) => setQuery(q)}></Busca>
       <Tabela items={items} isLoading={isLoading} />
       aa
     </div>
