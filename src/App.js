@@ -17,13 +17,13 @@ function App() {
   useEffect(() => {
       const fetch = async()=>{
         if(query===''){
-          const result = await axios(`http://gateway.marvel.com/v1/public/characters?ts=1&apikey=eb8c78fd1e6e98315a9d42fff3b5c040&hash=${hash}`);
+          const result = await axios(`https://gateway.marvel.com/v1/public/characters?ts=1&apikey=eb8c78fd1e6e98315a9d42fff3b5c040&hash=${hash}`);
 
           //console.log(result.data.data.results);
           setItems(result.data.data.results);
           setLoading(false);
         }else{
-          const result = await axios(`http://gateway.marvel.com/v1/public/characters?nameStartsWith=${query}&ts=1&apikey=eb8c78fd1e6e98315a9d42fff3b5c040&hash=${hash}`);
+          const result = await axios(`https://gateway.marvel.com/v1/public/characters?nameStartsWith=${query}&ts=1&apikey=eb8c78fd1e6e98315a9d42fff3b5c040&hash=${hash}`);
           setItems(result.data.data.results);
           setLoading(false);
         }
