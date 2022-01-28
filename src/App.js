@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Tabela from './components/Tabela';
 import Busca from './components/Busca';
 import axios from 'axios';
+import './App.css';
 
 //hash = timestamp (1) + private key + public key convertido em md5
 const hash = "21beb75ca82b20e52c8910f3e6599d79"
@@ -37,7 +38,7 @@ function App() {
       <Header />
       <Busca search={(q) => setQuery(q)}></Busca>
       <Tabela items={items} isLoading={isLoading} />
-      aa
+      
     </div>
   );
 }

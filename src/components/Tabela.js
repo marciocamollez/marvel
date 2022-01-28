@@ -3,7 +3,7 @@ import Personagem from './Personagem';
 
 const Tabela = ({items, isLoading}) => {
     return isLoading ? <h1>Carregando...</h1> : 
-    <section className="contents">
+    <section className="personagem--box">
         {
             items.map(item => (
                 <Personagem key={item.id} item={item} />
