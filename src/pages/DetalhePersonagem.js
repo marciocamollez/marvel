@@ -15,7 +15,7 @@ export const DetalhePersonagem = (props) => {
 
   useEffect(() => {
       const fetch = async()=>{
-          const result = await axios(`http://gateway.marvel.com/v1/public/characters/${id}?ts=1&apikey=${apikey}&hash=${hash}`);
+          const result = await axios(`https://gateway.marvel.com/v1/public/characters/${id}?ts=1&apikey=${apikey}&hash=${hash}`);
           //console.log(result.data.data.results);
           setItems(result.data.data.results);  
       

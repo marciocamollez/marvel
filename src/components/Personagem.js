@@ -12,7 +12,7 @@ const Personagem = ({item}) => {
         
         <div className="personagem--item">
             <div>
-                <img src={item.thumbnail.path + "/standard_fantastic.jpg"} alt={item.name} />
+                <Link to={`/personagem/${item.id}`}><img src={item.thumbnail.path + "/standard_fantastic.jpg"} alt={item.name} /></Link>
                 <div className="personagem--barra"></div>
             </div>
 

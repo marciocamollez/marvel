@@ -75,6 +75,9 @@ img {
     padding-right: 25px;
     box-sizing: border-box;
 }
+.personagem--item a{
+    text-decoration: none;
+}
 .personagem--item h2{
     font-family: sans-serif;
     font-size: 1rem;
