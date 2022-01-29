@@ -1,7 +1,15 @@
 import React from 'react';
 
+import {
+    BrowserRouter as Router,
+    Route,
+    Switch,
+    Link,
+} from "react-router-dom";
+
 const Personagem = ({item}) => {
     return(
+        
         <div className="personagem--item">
             <div>
                 <img src={item.thumbnail.path + "/standard_fantastic.jpg"} alt={item.name} />
@@ -9,13 +17,10 @@ const Personagem = ({item}) => {
             </div>
 
             <div>
-                <h2>{item.name}</h2>
-                {/*<ul>
-                    <li>Name: {item.name}</li>
-                    <li>Description: {item.description}</li>
-                </ul>*/}
+                <Link to={`/personagem/${item.id}`}><h2>{item.name}</h2></Link>
             </div>
         </div>
+            
     );
 }
 
