@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import HeaderPersonagem from '../components/HeaderPersonagem';
 import axios from 'axios';
 
-
 //hash = timestamp (1) + private key + public key convertido em md5
 const hash = "21beb75ca82b20e52c8910f3e6599d79"
 const apikey = "eb8c78fd1e6e98315a9d42fff3b5c040"
@@ -13,6 +12,7 @@ export const DetalhePersonagem = (props) => {
   const [items, setItems] = useState([]);  
   const [quadrinhos, setQuadrinhos] = useState([]);
   const [id] = useState(props.match.params.id);
+
 
   useEffect(() => {
       const fetch = async()=>{
@@ -31,9 +31,8 @@ export const DetalhePersonagem = (props) => {
 
   return (
     
-      <div className="container bg--personagem">
+      <div className="container">
         <HeaderPersonagem />
-        
 
         <section>
         {

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import Tabela from '../components/Tabela';
 import Busca from '../components/Busca';
+import Contagem from '../components/Contagem';
 import axios from 'axios';
 
 
@@ -15,6 +16,7 @@ function Inicial() {
   const [items, setItems] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [query, setQuery] = useState('');
+  const [contagem, setContagem] = useState([]);
 
   useEffect(() => {
       const fetch = async()=>{
@@ -24,10 +26,12 @@ function Inicial() {
           //console.log(result.data.data.results);
           setItems(result.data.data.results);
           setLoading(false);
+          setContagem(result.data.data.count);
         }else{
           const result = await axios(`https://gateway.marvel.com/v1/public/characters?nameStartsWith=${query}&ts=1&apikey=${apikey}&hash=${hash}`);
           setItems(result.data.data.results);
           setLoading(false);
+          setContagem(result.data.data.count);
         }
       
     }
@@ -40,6 +44,7 @@ function Inicial() {
       <div className="container">
         <Header />
         <Busca search={(q) => setQuery(q)}></Busca>
+        <Contagem contagem={contagem} isLoading={isLoading} />
         <Tabela items={items} isLoading={isLoading} />
       </div>
     

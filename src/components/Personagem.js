@@ -8,11 +8,16 @@ import {
 } from "react-router-dom";
 
 const Personagem = ({item}) => {
+
+    
+
     return(
         
         <div className="personagem--item">
             <div>
-                <Link to={`/personagem/${item.id}`}><img src={item.thumbnail.path + "/standard_fantastic.jpg"} alt={item.name} /></Link>
+                <Link to={`/personagem/${item.id}`}>
+                    <img src={item.thumbnail.path + "/standard_fantastic.jpg"} alt={item.name} />
+                </Link>
                 <div className="personagem--barra"></div>
             </div>
 

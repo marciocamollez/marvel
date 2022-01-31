@@ -2,6 +2,10 @@ body{
     background: #FFF;
     font-size: 16px;
 }
+p{
+    color: #404040;
+    font-size: 1em;
+}
 header.inicial {
     display: flex;
     justify-content: center;
@@ -88,9 +92,6 @@ img {
     height: 3px;
     background: red;
 }
-/*.bg--personagem{
-    background: #e7f6e7;
-}*/
 .header--personagem{
     padding-top: 50px;
     padding-bottom: 50px;
@@ -148,7 +149,10 @@ img {
     color: #404040;
     margin-bottom: 10px;
 }
-
+.personagem--count{
+    padding-left: 25px;
+    display: inline-block;
+}
 
 @media(max-width: 767px){
     .personagem--item{
