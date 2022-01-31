@@ -11,6 +11,7 @@ const apikey = "eb8c78fd1e6e98315a9d42fff3b5c040"
 export const DetalhePersonagem = (props) => {
 
   const [items, setItems] = useState([]);  
+  const [quadrinhos, setQuadrinhos] = useState([]);
   const [id] = useState(props.match.params.id);
 
   useEffect(() => {
@@ -18,7 +19,11 @@ export const DetalhePersonagem = (props) => {
           const result = await axios(`https://gateway.marvel.com/v1/public/characters/${id}?ts=1&apikey=${apikey}&hash=${hash}`);
           //console.log(result.data.data.results);
           setItems(result.data.data.results);  
-      
+
+
+          //console.log(result.data.data.results[0].comics.items);
+          //Para conseguir o array dentro do array e ver quais são todos os quadrinhos que o personagem participou
+          setQuadrinhos(result.data.data.results[0].comics.items);
     }
 
     fetch()
@@ -56,14 +61,24 @@ export const DetalhePersonagem = (props) => {
                     <div className="personagem--image">
                         <div><img src={item.thumbnail.path + "/detail.jpg"} alt={item.name} /></div>
                     </div>
+
+                    
                   
                 </div>
                 
             ))
         }
 
-        
-
+        <section className="personagem--aparicoes">
+          <h2>Todas as aparições:</h2>
+          {
+            quadrinhos.map(item => (
+              <div>
+                <p>{item.name}</p>
+              </div>
+            ))
+          }
+        </section>
 
         </section>
 
