@@ -4,7 +4,6 @@ import Header from '../components/Header';
 import Tabela from '../components/Tabela';
 import Busca from '../components/Busca';
 import Contagem from '../components/Contagem';
-//import Ordenacao from '../components/Ordenacao';
 import axios from 'axios';
 
 
@@ -37,25 +36,34 @@ function Inicial() {
         }
 
 
-        //Inicialmente deixa marcado a ordenação original que já é por nome
-        if(order){
-          const result = await axios(`https://gateway.marvel.com/v1/public/characters?ts=1&apikey=${apikey}&hash=${hash}`);
-          setItems(result.data.data.results);
-          setOrder(true);
-          setLoading(false);
-
-          //Caso a caixa seja desmarcada, faz a requisição para ser ordenado por item modificado
-        }else{
-          const result = await axios(`https://gateway.marvel.com/v1/public/characters?orderBy=modified&ts=1&apikey=${apikey}&hash=${hash}`);
-          setItems(result.data.data.results);
-          setOrder(false);
-          setLoading(false);
-        }
       
     }
 
     fetch()
-  },[query, order])
+  },[query]);
+
+  useEffect(() => {
+    const fetch2 = async()=>{
+
+      //Inicialmente deixa marcado a ordenação original que já é por nome
+      if(order){
+        const result = await axios(`https://gateway.marvel.com/v1/public/characters?ts=1&apikey=${apikey}&hash=${hash}`);
+        setItems(result.data.data.results);
+        setOrder(true);
+        setLoading(false);
+
+        //Caso a caixa seja desmarcada, faz a requisição para ser ordenado por item modificado
+      }else{
+        const result = await axios(`https://gateway.marvel.com/v1/public/characters?orderBy=modified&ts=1&apikey=${apikey}&hash=${hash}`);
+        setItems(result.data.data.results);
+        setOrder(false);
+        setLoading(false);
+      }
+    
+  }
+
+  fetch2()
+  },[order]);
 
   return (
     
@@ -70,7 +78,7 @@ function Inicial() {
               <span><img src="/ic_heroi.svg" alt="Ordenar" /></span>
               <span className="personagem--ordenacao__check">
                   <p>Ordenar por nome A-Z:</p> 
-                  <input id="checkbutton" type="checkbox" defaultChecked={order} onChange={() => setOrder(!order)} /><label for="checkbutton"></label>
+                  <input id="checkbutton" type="checkbox" defaultChecked={order} onChange={() => setOrder(!order)} /><label htmlFor="checkbutton"></label>
                  
               </span>
           </span>
