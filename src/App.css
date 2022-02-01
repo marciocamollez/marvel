@@ -150,8 +150,49 @@ img {
     margin-bottom: 10px;
 }
 .personagem--count{
+    flex: 1;
+}
+.widget{
+    display: flex;
+    align-items: center;
     padding-left: 25px;
+    padding-right: 25px;
+    margin-bottom: 25px;
+}
+.personagem--ordenacao{
+    display: flex;
+    align-items: center;
+}
+.personagem--ordenacao p{
+    color: red;
+}
+.personagem--ordenacao img{
     display: inline-block;
+    margin-right: 15px;
+}
+input[type=checkbox]{
+    display:none;
+}
+input[type=checkbox] + label{
+    display: inline-block;
+    padding: 0;
+    width: 75px;
+    height: 41px;
+    background-image: url(/public/toggle_off.svg);
+}
+input[type=checkbox]:checked + label{
+    display: inline-block;
+    padding: 0;
+    width: 75px;
+    height: 41px;
+    background-image: url(/public/toggle_on.svg);
+}
+.personagem--ordenacao__check{
+    display: flex;
+    align-items: center;
+}
+.personagem--ordenacao__check p{
+    margin-right: 15px;
 }
 
 @media(max-width: 767px){
@@ -171,5 +212,8 @@ img {
     }
     .personagem--details{
         order: 2;
+    }
+    .widget{
+        flex-direction: column;
     }
 }

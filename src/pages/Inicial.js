@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Tabela from '../components/Tabela';
 import Busca from '../components/Busca';
 import Contagem from '../components/Contagem';
+//import Ordenacao from '../components/Ordenacao';
 import axios from 'axios';
 
 
@@ -17,6 +18,7 @@ function Inicial() {
   const [isLoading, setLoading] = useState(true);
   const [query, setQuery] = useState('');
   const [contagem, setContagem] = useState([]);
+  const [order, setOrder] = useState(true);
 
   useEffect(() => {
       const fetch = async()=>{
@@ -33,18 +35,48 @@ function Inicial() {
           setLoading(false);
           setContagem(result.data.data.count);
         }
+
+
+        //Inicialmente deixa marcado a ordenação original que já é por nome
+        if(order){
+          const result = await axios(`https://gateway.marvel.com/v1/public/characters?ts=1&apikey=${apikey}&hash=${hash}`);
+          setItems(result.data.data.results);
+          setOrder(true);
+          setLoading(false);
+
+          //Caso a caixa seja desmarcada, faz a requisição para ser ordenado por item modificado
+        }else{
+          const result = await axios(`https://gateway.marvel.com/v1/public/characters?orderBy=modified&ts=1&apikey=${apikey}&hash=${hash}`);
+          setItems(result.data.data.results);
+          setOrder(false);
+          setLoading(false);
+        }
       
     }
 
     fetch()
-  },[query])
+  },[query, order])
 
   return (
     
       <div className="container">
         <Header />
         <Busca search={(q) => setQuery(q)}></Busca>
-        <Contagem contagem={contagem} isLoading={isLoading} />
+
+        <div className="widget">
+          <Contagem contagem={contagem} isLoading={isLoading} />
+
+          <span className="personagem--ordenacao">
+              <span><img src="/ic_heroi.svg" alt="Ordenar" /></span>
+              <span className="personagem--ordenacao__check">
+                  <p>Ordenar por nome A-Z:</p> 
+                  <input id="checkbutton" type="checkbox" defaultChecked={order} onChange={() => setOrder(!order)} /><label for="checkbutton"></label>
+                 
+              </span>
+          </span>
+        </div>
+
+        
         <Tabela items={items} isLoading={isLoading} />
       </div>
     
