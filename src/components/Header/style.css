@@ -1,0 +1,20 @@
+header.inicial {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+header.inicial h1{
+    font-family: sans-serif;
+    font-size: 2rem;
+    color: #404040;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+header.inicial p {
+    font-family: sans-serif;
+    font-size: 1rem;
+    color: #404040;
+    text-align: center;
+}

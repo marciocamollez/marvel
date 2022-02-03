@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-
-import HeaderPersonagem from '../components/HeaderPersonagem';
+import './style.css';
+import HeaderPersonagem from '../../components/HeaderPersonagem/HeaderPersonagem';
 import axios from 'axios';
 
 //hash = timestamp (1) + private key + public key convertido em md5

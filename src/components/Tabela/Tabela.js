@@ -1,5 +1,6 @@
 import React from 'react';
-import Personagem from './Personagem';
+import Personagem from '../Personagem/Personagem';
+import './style.css';
 
 
 const Tabela = ({items, isLoading}) => {

@@ -1,0 +1,15 @@
+.personagem--box{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.personagem--box{
+    display:flex;
+    margin-bottom: 50px;
+}
+@media(max-width: 767px){
+    .personagem--box{
+        flex-direction: column;
+    }
+}

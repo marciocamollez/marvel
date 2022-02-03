@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-
-import Header from '../components/Header';
-import Tabela from '../components/Tabela';
-import Busca from '../components/Busca';
-import Contagem from '../components/Contagem';
+import './style.css';
+import Header from '../../components/Header/Header';
+import Tabela from '../../components/Tabela/Tabela';
+import Busca from '../../components/Busca/Busca';
+import Contagem from '../../components/Contagem/Contagem';
 import axios from 'axios';
 
 

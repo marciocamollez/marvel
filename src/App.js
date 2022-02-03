@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Inicial from './pages/Inicial';
-import DetalhePersonagem from './pages/DetalhePersonagem';
+import Inicial from './pages/Inicial/Inicial';
+import DetalhePersonagem from './pages/DetalhePersonagem/DetalhePersonagem';
 
 import './App.css';
 import {

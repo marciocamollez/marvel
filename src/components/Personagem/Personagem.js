@@ -1,5 +1,6 @@
 import React from 'react';
-import LikeButton from './LikeButton';
+import LikeButton from '../LikeButton/LikeButton';
+import './style.css';
 
 import {
     BrowserRouter as Router,
