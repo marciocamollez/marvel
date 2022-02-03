@@ -1,4 +1,5 @@
 import React from 'react';
+import LikeButton from './LikeButton';
 
 import {
     BrowserRouter as Router,
@@ -21,8 +22,9 @@ const Personagem = ({item}) => {
                 <div className="personagem--barra"></div>
             </div>
 
-            <div>
-                <Link to={`/personagem/${item.id}`}><h2>{item.name}</h2></Link>
+            <div className="personagem--nomes">
+                <div><Link to={`/personagem/${item.id}`}><h2>{item.name}</h2></Link></div>
+                <LikeButton />
             </div>
         </div>
             
